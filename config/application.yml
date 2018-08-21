@@ -1,0 +1,8 @@
+HOST: 'localhost'
+PORT: '9123'
+
+DB_NAME: 'wapp_dev'
+DB_HOST: 'localhost'
+DB_USER: 'postgres'
+DB_PASSWORD: ''
+DB_PORT: '5000'

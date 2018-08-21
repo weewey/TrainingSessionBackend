@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= Figaro.env.db_host %>
+  username: <%= Figaro.env.db_user %>
+  password: <%= Figaro.env.db_password %>
+
+development:
+  <<: *default
+  port: <%= Figaro.env.db_port %>
+  database: wapp_dev
+
+test: &test
+  <<: *default
+  port: <%= Figaro.env.db_port %>
+  database: wapp_test
+
+production:
+  <<: *default
+  pool: 5
+  database: <%= Figaro.env.db_name %>
