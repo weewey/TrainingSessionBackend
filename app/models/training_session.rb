@@ -1,6 +1,6 @@
 class TrainingSession < ActiveRecord::Base
 
-  enum run_type: { easy: 'easy', interval: 'interval', long_run: 'long_run', tempo_run: 'tempo_run', fartlek: 'fartlek' }
+  enum run_type: { easy: 'easy', interval: 'interval', long_run: 'long_run', tempo_run: 'tempo_run', fartlek: 'fartlek', race: 'race' }
   enum time_of_day: { AM: 'AM', PM: 'PM' }
 
   validates :run_type, presence: true
