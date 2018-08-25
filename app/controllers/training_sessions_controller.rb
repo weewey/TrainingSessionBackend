@@ -17,7 +17,7 @@ class TrainingSessionsController < ActionController::API
       training_session
         .attributes
         .except('id', 'created_at', 'updated_at')
-        .deep_transform_keys { |key| key.camelize(:lower) }
+        .deep_transform_keys { |key| key == 'run_type' ? 'type' : key.camelize(:lower) }
         .merge('date': training_session.date.strftime('%d/%m/%Y'))
     end
     { 'trainingSessions': formatted_results }

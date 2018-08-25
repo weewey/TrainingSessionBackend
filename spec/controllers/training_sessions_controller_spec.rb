@@ -5,7 +5,7 @@ RSpec.describe TrainingSessionsController, type: :controller do
     let(:expected_training_sessions_response) do
       { trainingSessions: [{ date: '01/01/2001',
                              distanceInKm: 20,
-                             runType: 'easy',
+                             type: 'easy',
                              timeOfDay: 'AM',
                              coachComments: 'test' }] }.to_json
     end
