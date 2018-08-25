@@ -16,6 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+.local
 
 # Ignore uploaded files in development
 /storage/*
@@ -25,3 +26,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+config/application.yml
+public/assets
+.idea
+.DS_Store
+.mvn

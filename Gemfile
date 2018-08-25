@@ -22,7 +22,6 @@ gem 'pg'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
 gem 'figaro'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
@@ -32,12 +31,14 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', require: false
+  gem 'faker'
   gem 'rubocop-rspec', require: false
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_bot'
   gem 'factory_bot_rails'
-  gem 'simplecov', require: false
   gem 'webmock'
+  gem 'bootsnap', '>= 1.1.0', require: false
 end
 
 group :development do

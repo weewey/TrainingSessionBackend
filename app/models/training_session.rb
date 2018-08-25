@@ -6,6 +6,6 @@ class TrainingSession < ActiveRecord::Base
   validates :run_type, presence: true
   validates :time_of_day, presence: true
   validates :date, presence: true
-  validates :distance_in_km, presence: true, numericality: {:only_integer => true, :greater_than => 0 }
+  validates :distance_in_km, presence: true, numericality: { :only_integer => true, :greater_than => 0 }
 
 end
