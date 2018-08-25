@@ -1,6 +1,6 @@
 Figaro.require_keys(
   'HOST',
-  'PORT',
+  'APP_PORT',
   'DB_NAME',
   'DB_HOST',
   'DB_USER',

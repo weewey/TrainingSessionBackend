@@ -1,5 +1,5 @@
 HOST: 'localhost'
-PORT: '9123'
+APP_PORT: '9123'
 
 DB_NAME: 'wapp_dev'
 DB_HOST: 'localhost'

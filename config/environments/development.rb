@@ -53,6 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.after_initialize do
-    Rails.application.routes.default_url_options = { host: Figaro.env.host, port: Figaro.env.port }
+    Rails.application.routes.default_url_options = { host: Figaro.env.host, port: Figaro.env.app_port }
   end
 end

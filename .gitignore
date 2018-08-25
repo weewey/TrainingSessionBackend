@@ -32,3 +32,4 @@ public/assets
 .idea
 .DS_Store
 .mvn
+WBackend/WBackend.iml
