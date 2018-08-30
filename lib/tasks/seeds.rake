@@ -27,7 +27,7 @@ namespace :seed do
                        ['29/8/2018', 'easy', 'PM', 10, 'go easy'],
                        ['30/8/2018', 'fartlek', 'PM', 14, 'Fartlek: 15 minute warm up, 10 X 3:00 at 10K race effort with 2 minute recoveries. 15 minute warm down'],
                        ['31/8/2018', 'easy', 'PM', 12, 'go easy'],
-                       ['1/9/2018', 'easy', 'PM', 'PM', 20, 'go easy'],
+                       ['1/9/2018', 'easy', 'PM', 20, 'go easy'],
                        ['2/9/2018', 'long_run', 'PM', 30, 'go easy']]
       results = july_sessions.map do |session|
         TrainingSession.create(
@@ -37,8 +37,8 @@ namespace :seed do
           distance_in_km: session[3],
           coach_comments: session[4]
         )
-        puts results
       end
+      puts results
     end
   end
 end
