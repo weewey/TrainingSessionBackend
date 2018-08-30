@@ -36,4 +36,37 @@ RSpec.describe TrainingSessionsController, type: :controller do
       end
     end
   end
+
+  describe 'PUT #update' do
+    let(:training_session) { create(:training_session) }
+    context 'with valid update params' do
+      let(:executed_training_session_attributes) { training_session.attributes.merge('heart_rate' => 140) }
+
+      it 'updates the training session' do
+        put :update, params: { id: training_session.id, training_session: executed_training_session_attributes }
+        training_session.reload
+        expect(training_session.heart_rate).to eq(140)
+      end
+
+      it 'returns 200' do
+        put :update, params: { id: training_session.id, training_session: executed_training_session_attributes }
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'with invalid update params' do
+      let(:invalid_training_session_attributes) { training_session.attributes.merge('date' => '1/1/1111') }
+
+      it 'does NOT perform the update' do
+        put :update, params: { id: training_session.id, training_session: invalid_training_session_attributes }
+        training_session.reload
+        expect(training_session.date).not_to eq(Date.new(1111, 1, 1))
+      end
+
+      it 'returns 400' do
+        put :update, params: { id: training_session.id, training_session: invalid_training_session_attributes }
+        expect(response.status).to eq(400)
+      end
+    end
+  end
 end

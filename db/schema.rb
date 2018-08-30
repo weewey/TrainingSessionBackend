@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_102251) do
+ActiveRecord::Schema.define(version: 2018_08_30_075343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_102251) do
     t.string "coach_comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "feedback"
+    t.integer "duration"
+    t.string "executed_workout_pace"
+    t.integer "heart_rate"
     t.index ["date"], name: "index_training_sessions_on_date"
   end
 
