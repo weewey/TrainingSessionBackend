@@ -12,13 +12,16 @@ class TrainingSessionsController < ActionController::API
     @training_sessions = TrainingSession.where(date: requested_date)
   end
 
+  private
+
   def formatted_response
     formatted_results = @training_sessions.map do |training_session|
       training_session
         .attributes
-        .except('id', 'created_at', 'updated_at')
-        .deep_transform_keys { |key| key == 'run_type' ? 'type' : key.camelize(:lower) }
-        .merge('date': training_session.date.strftime('%d/%m/%Y'))
+        .except('id', 'created_at', 'updated_at', 'run_type')
+        .deep_transform_keys { |key| key.camelize(:lower) }
+        .merge('date': training_session.date.strftime('%d/%m/%Y'),
+               'type': training_session.run_type.camelize(:lower))
     end
     { 'trainingSessions': formatted_results }
   end
