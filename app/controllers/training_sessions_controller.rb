@@ -16,7 +16,7 @@ class TrainingSessionsController < ActionController::API
   private
 
   def set_training_sessions
-    return @training_sessions = TrainingSession.where(params[:date]) if params[:date]
+    return @training_sessions = TrainingSession.where(date: params[:date]) if params[:date]
     @training_sessions = TrainingSession.find(params[:id])
   end
 

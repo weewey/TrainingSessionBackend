@@ -12,7 +12,7 @@ RSpec.describe TrainingSessionsController, type: :controller do
     let(:training_session) { build(:training_session, date: '01/01/2001', distance_in_km: 20, coach_comments: 'test') }
 
     before do
-      allow(TrainingSession).to receive(:where).and_return([training_session])
+      allow(TrainingSession).to receive(:where).with(date: '01/01/2001').and_return([training_session])
     end
 
     it 'returns the expected training_sessions' do
