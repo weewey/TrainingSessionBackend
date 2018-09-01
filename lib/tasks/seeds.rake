@@ -30,15 +30,19 @@ namespace :seed do
                        ['1/9/2018', 'easy', 'PM', 20, 'go easy'],
                        ['2/9/2018', 'long_run', 'PM', 30, 'go easy']]
       results = july_sessions.map do |session|
-        TrainingSession.create(
+        training_session = TrainingSession.create(
           date: session[0],
           run_type: session[1],
           time_of_day: session[2],
           distance_in_km: session[3],
           coach_comments: session[4]
         )
+        [training_session.persisted?, training_session.id]
       end
-      puts results
+      saved_sessions = results.select { |session| session[0] }
+      failed_sessions = results - saved_sessions
+      puts "Total saved training sessions: #{saved_sessions.length}"
+      puts "Failed training sessions: #{failed_sessions}"
     end
   end
 end
