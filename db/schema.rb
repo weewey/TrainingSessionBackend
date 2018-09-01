@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_075343) do
+ActiveRecord::Schema.define(version: 2018_09_01_064943) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "training_sessions", force: :cascade do |t|
+  create_table "training_sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
     t.integer "distance_in_km"
     t.string "run_type"
