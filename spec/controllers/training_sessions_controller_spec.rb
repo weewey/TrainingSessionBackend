@@ -2,14 +2,16 @@ require 'rails_helper'
 
 RSpec.describe TrainingSessionsController, type: :controller do
   describe 'GET #show' do
+    let(:date) { Date.today.strftime('%d/%m/%Y') }
+    let(:training_session) { create(:training_session, date: date, distance_in_km: 20, coach_comments: 'test') }
     let(:expected_training_sessions_response) do
-      { trainingSessions: [{ date: '01/01/2001',
-                             distanceInKm: 20,
-                             timeOfDay: 'AM',
-                             coachComments: 'test',
-                             type: 'easy' }] }.to_json
+      { trainingSessions: [{ id: training_session.id,
+                             date: date,
+                             distanceInKm: training_session.distance_in_km,
+                             timeOfDay: training_session.time_of_day,
+                             coachComments: training_session.coach_comments,
+                             type: training_session.run_type }] }.to_json
     end
-    let(:training_session) { build(:training_session, date: '01/01/2001', distance_in_km: 20, coach_comments: 'test') }
 
     before do
       allow(TrainingSession).to receive(:where).with(date: '01/01/2001').and_return([training_session])

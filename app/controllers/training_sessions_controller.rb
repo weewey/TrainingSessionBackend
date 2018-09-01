@@ -25,8 +25,7 @@ class TrainingSessionsController < ActionController::API
   def formatted_response
     formatted_results = @training_sessions.map do |training_session|
       training_session
-        .attributes
-        .select { |k, _| %w[date distance_in_km time_of_day coach_comments].include?(k) }
+        .slice(:id, :date, :distance_in_km, :time_of_day, :coach_comments)
         .deep_transform_keys { |key| key.camelize(:lower) }
         .merge('date': training_session.date.strftime('%d/%m/%Y'),
                'type': training_session.run_type.camelize(:lower))
