@@ -54,22 +54,24 @@ namespace :update_log do
                        duration: 59, executed_workout_pace: '5:38min/km', heart_rate: 140 },
                      { date: '28/8/2018', time_of_day: 'PM', distance_in_km: 16, feedback: 'mid-week long run',
                        duration: 81, executed_workout_pace: '5:08min/km', heart_rate: 146 },
-                     { date: '29/8/2018', time_of_day: 'AM', distance_in_km: 9, feedback: 'easy run',
-                       duration: 48, executed_workout_pace: '5:15min/km', heart_rate: 139 },
                      { date: '29/8/2018', time_of_day: 'PM', distance_in_km: 8, feedback: 'easy run',
                        duration: 44, executed_workout_pace: '5:56min/km', heart_rate: 136 },
                      { date: '30/8/2018', time_of_day: 'PM', distance_in_km: 14, feedback: 'easy run',
                        duration: 72, executed_workout_pace: '5:15min/km', heart_rate: 137 },
                      { date: '31/8/2018', time_of_day: 'PM', distance_in_km: 21, feedback: 'Workout felt tough, I was still feeling the effects of the 21km race. I did the workout on the roads rather than on track. Road was generally flat with abit of humps.',
                        duration: 98, executed_workout_pace: '800m: (3:06, 3:01, 3:01, 3:01, 3:01, 3:01, 3:03, 3:01, 3:01, 3:03)', heart_rate: 165 },
-                     { date: '1/9/2018', time_of_day: 'AM', distance_in_km: 13, feedback: 'easy run',
-                       duration: 67, executed_workout_pace: '5:10min/km', heart_rate: 140 },
                      { date: '1/9/2018', time_of_day: 'PM', distance_in_km: 9, feedback: 'easy run',
                        duration: 46, executed_workout_pace: '5:05min/km', heart_rate: 140 },
-                     { date: '2/9/2018', time_of_day: 'AM', distance_in_km: 23, feedback: 'Long run, felt dehydrated during the run. Felt harder than it supposed to',
-                       duration: 109, executed_workout_pace: '4.46min/km', heart_rate: 164 },
                      { date: '2/9/2018', time_of_day: 'PM', distance_in_km: 7.5, feedback: 'easy run',
                        duration: 38, executed_workout_pace: '5:07min/km', heart_rate: 139 },
+      ]
+      extra_august_training_sessions = [
+        { date: '29/8/2018', time_of_day: 'AM', distance_in_km: 9, run_type: 'easy', feedback: 'easy run',
+          duration: 48, executed_workout_pace: '5:15min/km', heart_rate: 139, coach_comments: 'easy run' },
+        { date: '1/9/2018', time_of_day: 'AM', distance_in_km: 13, feedback: 'easy run',
+          duration: 67, executed_workout_pace: '5:10min/km', heart_rate: 140, run_type: 'easy', coach_comments: 'easy run' },
+        { date: '2/9/2018', time_of_day: 'AM', distance_in_km: 23, feedback: 'Long run, felt dehydrated during the run. Felt harder than it supposed to',
+          duration: 109, executed_workout_pace: '4.46min/km', heart_rate: 164, run_type: 'long_run', coach_comments: 'easy long run' },
       ]
       results = august_logs.map do |session|
         if training_session_exists?(session)
@@ -82,10 +84,25 @@ namespace :update_log do
           [false, session[:date], session[:time_of_day]]
         end
       end
+      new_sessions = extra_august_training_sessions.map do |session|
+        training_session = TrainingSession.create(
+          date: session[:date],
+          run_type: session[:run_type],
+          time_of_day: session[:time_of_day],
+          distance_in_km: session[:distance_in_km],
+          coach_comments: session[:coach_comments],
+          executed_workout_pace: session[:executed_workout_pace],
+          heart_rate: session[:heart_rate],
+          feedback: session[:feedback],
+          duration: session[:duration]
+        )
+        [training_session.persisted?, training_session.id, training_session.date, training_session.time_of_day]
+      end
       updated_sessions = results.select { |session| session[0] }
       failed_sessions = results - updated_sessions
       puts "Total updated training sessions: #{updated_sessions.length}"
       puts "Failed training sessions: #{failed_sessions}"
+      puts "Extra training sessions: #{new_sessions}"
     end
   end
 end
