@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_01_064943) do
+ActiveRecord::Schema.define(version: 2018_09_09_050716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_01_064943) do
 
   create_table "training_sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
-    t.integer "distance_in_km"
+    t.float "distance_in_km"
     t.string "run_type"
     t.string "time_of_day"
     t.string "coach_comments"

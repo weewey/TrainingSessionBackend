@@ -1,4 +1,5 @@
 class TrainingSession < ActiveRecord::Base
+  default_scope { order(date: :asc) }
 
   enum run_type: { easy: 'easy', interval: 'interval', long_run: 'long_run', tempo_run: 'tempo_run', fartlek: 'fartlek', race: 'race' }
   enum time_of_day: { AM: 'AM', PM: 'PM' }
@@ -7,7 +8,7 @@ class TrainingSession < ActiveRecord::Base
   validates :time_of_day, presence: true
   validates :date, presence: true
   validate :training_session_date_to_be_current_year
-  validates :distance_in_km, presence: true, numericality: { :only_integer => true, :greater_than => 0 }
+  validates :distance_in_km, presence: true, numericality: { :greater_than => 0 }
 
   def training_session_date_to_be_current_year
     unless date.year == Date.today.year
