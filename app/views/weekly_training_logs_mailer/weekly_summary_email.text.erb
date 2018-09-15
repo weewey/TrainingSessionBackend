@@ -1,0 +1,11 @@
+Dear Dave,
+
+These are my training logs for the following week:
+
+<%= @sessions.first.date %> to <%= @sessions.last.date %>
+
+Date, Day of Week, AM/PM, Workout Type, Workout, Workout Pace, Comments
+<% for session in @sessions %>
+  <%= session.date %> ,<%= session.date.strftime('%A') %> ,<%= session.time_of_day %> ,<%= session.run_type.camelize %> ,<%= session.coach_comments %> ,<%= session.executed_workout_pace %> ,<%= session.feedback %>
+<% end %>
+

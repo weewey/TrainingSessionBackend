@@ -31,7 +31,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -55,4 +55,15 @@ Rails.application.configure do
   config.after_initialize do
     Rails.application.routes.default_url_options = { host: Figaro.env.host, port: Figaro.env.app_port }
   end
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    user_name: Figaro.env.w_email_username,
+    password: Figaro.env.w_email_password,
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end

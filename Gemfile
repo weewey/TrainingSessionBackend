@@ -10,6 +10,8 @@ gem 'puma', '~> 3.11'
 gem 'pg'
 gem 'figaro'
 gem 'bootsnap', require: false
+gem 'bootstrap'
+gem 'premailer-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

@@ -1,0 +1,35 @@
+<% content_for :header do %>
+  <h1>Hi Coach, the training logs from </h1>
+  <h2 style="color: #b3ccff; text-decoration: underline; "> <%= @sessions.first.date %> to <%= @sessions.last.date %></h2>
+<% end %>
+
+<% content_for :content do %>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th width="10%">Date</th>
+        <th width="10%">Day of Week</th>
+        <th width="5%">AM/PM</th>
+        <th width="10%">Workout Type</th>
+        <th width="35%">Workout</th>
+        <th width="20%">Workout Pace</th>
+        <th width="20%">Comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% for session in @sessions %>
+        <tr>
+          <td><%= session.date %></td>
+          <td> <%= session.date.strftime('%A') %></td>
+          <td> <%= session.time_of_day %></td>
+          <td> <%= session.run_type.camelize %> </td>
+          <td> <%= session.coach_comments %> </td>
+          <td> <%= session.executed_workout_pace %> </td>
+          <td> <%= session.feedback %> </td>
+        </tr>
+        </tbody>
+      <% end %>
+      </table>
+  </div>
+<% end %>

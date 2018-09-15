@@ -23,14 +23,16 @@ RSpec.describe TrainingSessionsController, type: :controller do
     end
 
     context 'when the trainingSession type is in snake_case' do
+      let(:training_session_uuid) { SecureRandom.uuid }
       let(:expected_training_sessions_response) do
-        { trainingSessions: [{ date: '01/01/2001',
-                               distanceInKm: 20,
+        { trainingSessions: [{ id: training_session_uuid,
+                               date: '01/01/2001',
+                               distanceInKm: 20.0,
                                timeOfDay: 'AM',
                                coachComments: 'test',
                                type: 'longRun' }] }.to_json
       end
-      let(:training_session) { build(:training_session, run_type: 'long_run', date: '01/01/2001', distance_in_km: 20, coach_comments: 'test') }
+      let(:training_session) { build(:training_session, id: training_session_uuid, run_type: 'long_run', date: '01/01/2001', distance_in_km: 20, coach_comments: 'test') }
 
       it 'should convert it to camelCase' do
         get :show, params: { date: '01/01/2001' }
