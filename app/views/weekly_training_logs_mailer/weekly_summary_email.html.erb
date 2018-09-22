@@ -9,10 +9,11 @@
       <thead>
       <tr>
         <th width="10%">Date</th>
-        <th width="10%">Day of Week</th>
+        <th width="5%">Day of Week</th>
         <th width="5%">AM/PM</th>
         <th width="10%">Distance (KM)</th>
-        <th width="10%">Workout Type</th>
+        <th width="10%">Duration (Mins)</th>
+        <th width="5%">Workout Type</th>
         <th width="35%">Workout</th>
         <th width="20%">Workout Pace</th>
         <th width="20%">Comments</th>
@@ -25,6 +26,7 @@
           <td> <%= session.date.strftime('%A') %></td>
           <td> <%= session.time_of_day %></td>
           <td> <%= session.distance_in_km %></td>
+          <td> <%= session.duration %></td>
           <td> <%= session.run_type.camelize %> </td>
           <td> <%= session.coach_comments %> </td>
           <td> <%= session.executed_workout_pace %> </td>
