@@ -10,3 +10,5 @@ DB_PORT: '5000'
 W_EMAIL_USERNAME: 'w.run.training@gmail.com'
 W_EMAIL_PASSWORD: '%6@mK9U2!uXb'
 COACH_EMAIL_ADDRESS: 'chuayewwee@gmail.com'
+
+MY_EMAIL_ADDRESS: 'chuayewwee@gmail.com'

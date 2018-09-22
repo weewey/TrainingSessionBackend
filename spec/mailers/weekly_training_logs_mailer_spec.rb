@@ -17,6 +17,7 @@ RSpec.describe WeeklyTrainingLogsMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to match(/Yew Wee Weekly Training Logs - (#{from_date}) to (#{to_date})/)
       expect(mail.to).to include(Figaro.env.coach_email_address)
+      expect(mail.cc).to include(Figaro.env.my_email_address)
       expect(mail.from).to eq([Figaro.env.w_email_username])
     end
 
