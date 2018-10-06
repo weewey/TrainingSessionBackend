@@ -334,6 +334,17 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="faraday (vbundled(0.15.3)) [path][gem]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/faraday-0.15.3/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/faraday-0.15.3/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="ffi (vbundled(1.9.25)) [path][gem]">
         <CLASSES>
           <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/ffi-1.9.25/lib" />
@@ -506,6 +517,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/msgpack-1.2.4/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="multipart-post (vbundled(2.0.0)) [path][gem]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/multipart-post-2.0.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.local/ruby/2.5.0/gems/multipart-post-2.0.0/lib" />
         </SOURCES>
       </library>
     </orderEntry>
