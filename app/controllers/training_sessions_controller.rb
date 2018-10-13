@@ -66,6 +66,6 @@ class TrainingSessionsController < ActionController::API
 
   def update_training_session_params
     params.require(:training_session).permit(:heart_rate, :feedback, :executed_workout_pace,
-                                             :duration, :date, :distance_in_km)
+                                             :duration, :date, :distance_in_km, :coach_comments, :time_of_day)
   end
 end
